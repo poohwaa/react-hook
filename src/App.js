@@ -23,7 +23,7 @@ function App() {
             <input placeholder="Name" {...name} />
             <hr/>
             {contents.map((item, index) => (
-                <button onClick={() => changeItem(index)}>{item.tab}</button>
+                <button key={index} onClick={() => changeItem(index)}>{item.tab}</button>
             ))}
             <div>{currItem.content}</div>
         </div>
