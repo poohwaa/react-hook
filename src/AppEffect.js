@@ -1,8 +1,10 @@
-import { useRef } from "react";
 import useTitle from "./hook/useTitle";
 import useClick from "./hook/useClick";
 import useConfirm from "./hook/useConfirm";
 import usePreventLeave from "./hook/usePreventLeave";
+import useBeforeLeave from "./hook/useBeforeLeave";
+import useFadeIn from "./hook/useFadeIn";
+import useNetwork from "./hook/useNetwork";
 
 function AppEffect () {
     const titleUpdator = useTitle("...Loading")
@@ -18,6 +20,17 @@ function AppEffect () {
     const confirmDelete = useConfirm("Are you sure?", deleteWord, abort)
 
     const {enablePrevent, disablePrevent} = usePreventLeave();
+
+    const showMsg = () => console.log("plz dont leave")
+    useBeforeLeave(showMsg)
+
+    const fadeEleRef1 = useFadeIn(1, 2);
+    const fadeEleRef2 = useFadeIn(5, 2);
+
+    const handleNetworkChange = (isOnline) => {
+        console.log(isOnline ? "We are Online": "We are Offline")
+    }
+    const onLine = useNetwork(handleNetworkChange);
     
     return (
         <div className="App">
@@ -26,6 +39,11 @@ function AppEffect () {
             <hr/>
             <button onClick={enablePrevent}>Protect</button>
             <button onClick={disablePrevent}>Unprotect</button>
+            <hr/>
+            <h1 {...fadeEleRef1}>FADE IN1</h1>
+            <h1 {...fadeEleRef2}>FADE IN2</h1>
+            <hr/>
+            <p>{onLine? "Online" : "Offline"}</p>
         </div>
     );
 }

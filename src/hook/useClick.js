@@ -11,18 +11,20 @@ const useClick = (onClick) => {
             return;
         }
         
+        let eleCurrent
         if (element.current) {
-            element.current.addEventListener("click", onClick)
+            eleCurrent = element.current;
+            eleCurrent.addEventListener("click", onClick)
         }
         
         // componentWillUnmount
         return () => {
-            if (element.current) {
-                element.current.removeEventListener("click", onClick)
+            if (eleCurrent) {
+                eleCurrent.removeEventListener("click", onClick)
             }
         }
         // componentDidMount once 
-    }, [])
+    })
 
     return  element;
 }
