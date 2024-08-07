@@ -11,8 +11,6 @@ const useFullScreen = (callback) => {
                 callback(true);
             }
         }
-
-
     }
 
     const exitFull = () => {
