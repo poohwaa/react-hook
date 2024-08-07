@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppEffect from './AppEffect';
+import AppEffect2 from './AppEffect2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
     <AppEffect />
+    <AppEffect2 />
   </React.StrictMode>
 );
 
